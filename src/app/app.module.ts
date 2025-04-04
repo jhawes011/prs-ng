@@ -23,6 +23,7 @@ import { RequestListComponent } from './feature/request/request-list/request-lis
 import { RequestEditComponent } from './feature/request/request-edit/request-edit.component';
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
+import { MenuComponent } from './core/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -46,13 +47,11 @@ import { RequestDetailComponent } from './feature/request/request-detail/request
     RequestListComponent,
     RequestEditComponent,
     RequestCreateComponent,
-    RequestDetailComponent
+    RequestDetailComponent,
+    MenuComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
