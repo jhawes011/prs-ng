@@ -1,1 +1,123 @@
-<p>vendor-create works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Vendor-Create</i></strong>
+    <a [routerLink]="['/vendor-list']" class="text-decoration-none fs-6">
+      Back to Vendor List
+    </a>
+  </h2>
+
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="code" class="col-sm-2 col-form-label">Code:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="code"
+          class="form-control"
+          [(ngModel)]="newVendor.code"
+          name="code"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          [(ngModel)]="newVendor.name"
+          name="name"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="address" class="col-sm-2 col-form-label">Address:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="address"
+          class="form-control"
+          [(ngModel)]="newVendor.address"
+          name="address"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="city" class="col-sm-2 col-form-label">City:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="city"
+          class="form-control"
+          [(ngModel)]="newVendor.city"
+          name="city"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="state" class="col-sm-2 col-form-label">State:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="state"
+          class="form-control"
+          [(ngModel)]="newVendor.state"
+          name="state"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="zip" class="col-sm-2 col-form-label">Zip:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="zip"
+          class="form-control"
+          [(ngModel)]="newVendor.zip"
+          name="zip"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="phoneNumber" class="col-sm-2 col-form-label"
+        >Phone Number:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="phoneNumber"
+          [(ngModel)]="newVendor.phoneNumber"
+          name="phoneNumber"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="email"
+          [(ngModel)]="newVendor.email"
+          name="email"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="addVendor()" class="btn btn-sm btn-primary">
+          Add Vendor
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
