@@ -14,12 +14,12 @@ export class UserService {
     return this.http.get(URL + '/') as Observable<User[]>;
   }
   add(user: User): Observable<User> {
-    return this.http.post(URL, movie) as Observable<User>;
+    return this.http.post(URL, user) as Observable<User>;
   }
   getById(id: number): Observable<User> {
     return this.http.get(URL + '/' + id) as Observable<User>;
   }
-  update(user: User): Observable<Actor> {
+  update(user: User): Observable<User> {
     return this.http.put(URL + '/' + user.id, user) as Observable<User>;
   }
   delete(id: number): Observable<any> {

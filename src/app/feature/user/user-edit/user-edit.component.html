@@ -1,1 +1,123 @@
-<p>user-edit works!</p>
+<div class="container-fluid">
+  <h2>User-Edit</h2>
+  <form>
+    <div class="form-group row">
+      <label for="id" class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-4">
+        <p id="id" class="form-control-plaintext">{{ user.id }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="userName" class="col-sm-2 col-form-label">User Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="userName"
+          class="form-control"
+          [(ngModel)]="user.userName"
+          name="userName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Password:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="password"
+          class="form-control"
+          [(ngModel)]="user.password"
+          name="password"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="firstName" class="col-sm-2 col-form-label">First Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          [(ngModel)]="user.firstName"
+          name="firstName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          [(ngModel)]="user.lastName"
+          name="lastName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="phoneNumber" class="col-sm-2 col-form-label"
+        >Phone Number:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="phoneNumber"
+          class="form-control"
+          [(ngModel)]="user.phoneNumber"
+          name="phoneNumber"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-4">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          [(ngModel)]="user.email"
+          name="email"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="reviewer" class="col-sm-2 col-form-label">Reviewer:</label>
+      <div class="col-sm-4">
+        <input
+          type="checkbox"
+          id="reviewer"
+          [(ngModel)]="user.reviewer"
+          name="reviewer"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="admin" class="col-sm-2 col-form-label">Admin:</label>
+      <div class="col-sm-4">
+        <input
+          type="checkbox"
+          id="admin"
+          [(ngModel)]="user.admin"
+          name="admin"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="save()" class="btn btn-sm btn-primary">
+          Save User
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

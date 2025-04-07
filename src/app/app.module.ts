@@ -24,7 +24,11 @@ import { RequestEditComponent } from './feature/request/request-edit/request-edi
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
 import { MenuComponent } from './core/menu/menu.component';
-
+import { FormsModule } from '@angular/forms';
+import {
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,8 +54,8 @@ import { MenuComponent } from './core/menu/menu.component';
     RequestDetailComponent,
     MenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

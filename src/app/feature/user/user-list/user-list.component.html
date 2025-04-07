@@ -1,1 +1,59 @@
-<p>user-list works!</p>
+<div class="p-4">
+  <section class="heading">
+    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
+    <a routerLink="/user-create">
+      <img
+        width="20"
+        height="20"
+        src="images/add-icon.png"
+        alt="Add Icon"
+        title="Add New"
+      />
+    </a>
+  </section>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>Username</th>
+
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Reviewer</th>
+      <th>Admin</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.userName }}</td>
+        <td>{{ u.firstName }}</td>
+        <td>{{ u.lastName }}</td>
+        <td>{{ u.phoneNumber }}</td>
+        <td>{{ u.email }}</td>
+        <td>
+          <input type="checkbox" [checked]="u.reviewer" disabled />
+        </td>
+        <td>
+          <input type="checkbox" [checked]="u.admin" disabled />
+        </td>
+        <td>
+          <a routerLink="/user-edit/{{ u.id }}">
+            <img
+              src="images/pencil-icon.png"
+              width="20"
+              height="20"
+              title="Edit Movie"
+            />|
+            <a routerLink="/user-detail/{{ u.id }}">
+              <img
+                src="images/details.png"
+                width="20"
+                height="20"
+                title="User Details"
+              />
+            </a>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
