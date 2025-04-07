@@ -22,7 +22,7 @@ export class UserCreateComponent implements OnInit, OnDestroy {
 
   addUser(): void {
     this.subscription = this.userSvc.add(this.newUser).subscribe((resp) => {
-      this.router.navigateByUrl('/actor-list');
+      this.router.navigateByUrl('/user-list');
     });
   }
   // validateBirthDate(): boolean {

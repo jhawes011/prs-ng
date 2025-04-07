@@ -1,34 +1,123 @@
-<div class="p-4">
-  <h1>{{ title }}</h1>
-  <table>
-    <tr>
-      <td>First Name:</td>
-      <td>
-        <input [(ngModel)]="newActor.firstName" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Last Name:</td>
-      <td>
-        <input [(ngModel)]="newActor.lastName" type="text" />
-      </td>
-    </tr>
-    <tr>
-      <td>Gender:</td>
-      <td>
-        <select [(ngModel)]="newUser." class="rounded">
-          <option *ngFor="let g of genders" [ngValue]="g">
-            {{ g }}
-          </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>Birthdate:</td>
-      <td>
-        <input [(ngModel)]="newUser.birthDate" type="date" />
-      </td>
-    </tr>
-  </table>
-  <button (click)="addUser()">Add User</button>
+<div class="container-fluid">
+  <h2>
+    <strong><i>User-Create</i></strong>
+    <a [routerLink]="['/user-list']" class="text-decoration-none fs-6">
+      Back to User List
+    </a>
+  </h2>
+
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="userName" class="col-sm-2 col-form-label">User Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="userName"
+          class="form-control"
+          [(ngModel)]="newUser.userName"
+          name="userName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="password" class="col-sm-2 col-form-label">Password:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="password"
+          class="form-control"
+          [(ngModel)]="newUser.password"
+          name="password"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="firstName" class="col-sm-2 col-form-label">First Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          [(ngModel)]="newUser.firstName"
+          name="firstName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="lastName" class="col-sm-2 col-form-label">Last Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          [(ngModel)]="newUser.lastName"
+          name="lastName"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="phoneNumber" class="col-sm-2 col-form-label"
+        >Phone Number:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="phoneNumber"
+          class="form-control"
+          [(ngModel)]="newUser.phoneNumber"
+          name="phoneNumber"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 col-form-label">Email:</label>
+      <div class="col-sm-4">
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          [(ngModel)]="newUser.email"
+          name="email"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="reviewer" class="col-sm-2 col-form-label">Reviewer:</label>
+      <div class="col-sm-4">
+        <input
+          type="checkbox"
+          id="reviewer"
+          [(ngModel)]="newUser.reviewer"
+          name="reviewer"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="admin" class="col-sm-2 col-form-label">Admin:</label>
+      <div class="col-sm-4">
+        <input
+          type="checkbox"
+          id="admin"
+          [(ngModel)]="newUser.admin"
+          name="admin"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="addUser()" class="btn btn-sm btn-primary">
+          Add User
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
