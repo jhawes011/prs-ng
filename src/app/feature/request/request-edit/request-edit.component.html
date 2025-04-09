@@ -1,1 +1,125 @@
-<p>request-edit works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Request-Detail</i> </strong>
+    <a [routerLink]="['/request-list']" class="text-decoration-none fs-6">
+      Back to Request List
+    </a>
+  </h2>
+  <form>
+    <div class="form-group row">
+      <label for="id" class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-4">
+        <p id="id" class="form-control-plaintext">{{ request.id }}</p>
+      </div>
+    </div>
+    <hr />
+
+    <div class="form-group row">
+      <label for="id" class="col-sm-2 col-form-label">User</label>
+      <div class="col-sm-4">
+        <p id="id" class="form-control-plaintext">
+          {{ request.user.firstName }} {{ request.user.lastName }}
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label"
+        >Description:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="description"
+          class="form-control"
+          [(ngModel)]="request.description"
+          name="description"
+        />
+      </div>
+    </div>
+
+    <hr />
+    <div class="form-group row">
+      <label for="justification" class="col-sm-2 col-form-label"
+        >Justification:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="justification"
+          class="form-control"
+          [(ngModel)]="request.justification"
+          name="justification"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="reasonForRejection" class="col-sm-2 col-form-label"
+        >Rejection Reason:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="reasonForRejection"
+          class="form-control"
+          [(ngModel)]="request.reasonForRejection"
+          name="reasonForRejection"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="deliveryMode" class="col-sm-2 col-form-label"
+        >Delivery Mode:</label
+      >
+      <div class="col-sm-4">
+        <select
+          id="deliveryMode"
+          class="form-control"
+          [(ngModel)]="request.deliveryMode"
+          name="deliveryMode"
+        >
+          <option value="Acme Mail Service">Acme Mail Service</option>
+          <option value="Local Pickup">Local Pickup</option>
+        </select>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="status" class="col-sm-2 col-form-label">Status:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="status"
+          class="form-control"
+          [(ngModel)]="request.status"
+          name="status"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="total" class="col-sm-2 col-form-label">Total:</label>
+      <div class="col-sm-4">
+        <input
+          type="number"
+          id="total"
+          class="form-control"
+          [(ngModel)]="request.total"
+          name="total"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="save()" class="btn btn-sm btn-primary">
+          Save Request
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

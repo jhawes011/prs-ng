@@ -1,1 +1,94 @@
-<p>product-create works!</p>
+<div class="container-fluid">
+  <h2>Product-Create</h2>
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="vendorId" class="col-sm-2 col-form-label">Vendor Id:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="vendorId"
+          class="form-control"
+          [(ngModel)]="newProduct.vendor.id"
+          name="vendorId"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="partNumber" class="col-sm-2 col-form-label"
+        >Part Number:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="partNumber"
+          class="form-control"
+          [(ngModel)]="newProduct.partNumber"
+          name="partNumber"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          [(ngModel)]="newProduct.name"
+          name="name"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="price" class="col-sm-2 col-form-label">Price:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="price"
+          class="form-control"
+          [(ngModel)]="newProduct.price"
+          name="price"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="unit" class="col-sm-2 col-form-label">Unit:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="unit"
+          class="form-control"
+          [(ngModel)]="newProduct.unit"
+          name="unit"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="photoPath" class="col-sm-2 col-form-label">Photo Path:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="photoPath"
+          class="form-control"
+          [(ngModel)]="newProduct.photoPath"
+          name="photoPath"
+        />
+      </div>
+    </div>
+    <hr />
+
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="addProduct()" class="btn btn-sm btn-primary">
+          Save Product
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

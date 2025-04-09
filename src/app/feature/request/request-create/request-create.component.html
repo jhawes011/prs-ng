@@ -1,1 +1,95 @@
-<p>request-create works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Request-Create</i> </strong>
+    <a [routerLink]="['/request-list']" class="text-decoration-none fs-6">
+      Back to Request List
+    </a>
+  </h2>
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="userId" class="col-sm-2 col-form-label">User ID:</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="userId"
+          class="form-control"
+          [(ngModel)]="newRequest.user.id"
+          name="userId"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="description" class="col-sm-2 col-form-label"
+        >Description:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="description"
+          class="form-control"
+          [(ngModel)]="newRequest.description"
+          name="description"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="justification" class="col-sm-2 col-form-label"
+        >Justification:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="justification"
+          class="form-control"
+          [(ngModel)]="newRequest.justification"
+          name="justification"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="dateNeeded" class="col-sm-2 col-form-label"
+        >Date Needed:</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="date"
+          id="dateNeeded"
+          class="form-control"
+          [(ngModel)]="newRequest.dateNeeded"
+          name="dateNeeded"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="deliveryMode" class="col-sm-2 col-form-label"
+        >Delivery Mode:</label
+      >
+      <div class="col-sm-4">
+        <select
+          id="deliveryMode"
+          class="form-control"
+          [(ngModel)]="newRequest.deliveryMode"
+          name="deliveryMode"
+        >
+          <option value="Acme Mail Service">Acme Mail Service</option>
+          <option value="Local Pickup">Local Pickup</option>
+        </select>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="addRequest()" class="btn btn-sm btn-primary">
+          Create Request
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

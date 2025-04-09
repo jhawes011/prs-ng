@@ -29,6 +29,7 @@ import {
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import {
     RequestEditComponent,
     RequestCreateComponent,
     RequestDetailComponent,
+    RequestListComponent,
     MenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],

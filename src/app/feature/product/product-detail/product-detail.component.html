@@ -1,1 +1,131 @@
-<p>product-detail works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Product-Detail</i> </strong>
+    <a [routerLink]="['/product-list']" class="text-decoration-none fs-6">
+      Back to Product List
+    </a>
+  </h2>
+
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="id" class="col-sm-2 col-form-label">ID</label>
+      <div class="col-sm-4">
+        <p id="id" class="form-control-plaintext">{{ product.id }}</p>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="vendor" class="col-sm-2 col-form-label">Vendor</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="vendor"
+          class="form-control"
+          [(ngModel)]="product.vendor.id"
+          name="vendor"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="vendorName" class="col-sm-2 col-form-label"
+        >Vendor Name</label
+      >
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="vendorName"
+          class="form-control"
+          [(ngModel)]="product.vendor.name"
+          name="vendorName"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Part Number</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="partNumber"
+          class="form-control"
+          [(ngModel)]="product.partNumber"
+          name="partNumber"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="name"
+          class="form-control"
+          [(ngModel)]="product.name"
+          name="name"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="price" class="col-sm-2 col-form-label">Price</label>
+      <div class="col-sm-4">
+        <input
+          type="string"
+          id="price"
+          class="form-control"
+          [(ngModel)]="product.price"
+          name="price"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="unit" class="col-sm-2 col-form-label">Unit</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="unit"
+          class="form-control"
+          [(ngModel)]="product.unit"
+          name="unit"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="photoPath" class="col-sm-2 col-form-label">Photo Path</label>
+      <div class="col-sm-4">
+        <input
+          type="text"
+          id="photoPath"
+          class="form-control"
+          [(ngModel)]="product.photoPath"
+          name="photoPath"
+          disabled
+        />
+      </div>
+    </div>
+    <hr />
+
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <a
+          [routerLink]="['/product-edit', product.id]"
+          class="btn btn-sm btn-warning me-2"
+        >
+          Edit
+        </a>
+        <button (click)="delete()" class="btn btn-sm btn-danger">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>
