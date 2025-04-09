@@ -53,7 +53,7 @@ import { RequestLinesComponent } from './feature/request/request-lines/request-l
     RequestEditComponent,
     RequestCreateComponent,
     RequestDetailComponent,
-    RequestListComponent,
+    RequestLinesComponent,
     MenuComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],

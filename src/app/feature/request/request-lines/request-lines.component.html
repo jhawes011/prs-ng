@@ -1,1 +1,88 @@
-<p>lines works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Purchase Request</i></strong>
+    <a [routerLink]="['/request-list']" class="text-decoration-none fs-6">
+      Return to Requests List
+    </a>
+  </h2>
+
+  <div class="p-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ request.user.firstName }} {{ request.user.lastName }}</td>
+          <td>{{ request.description }}</td>
+          <td>{{ request.status }}</td>
+          <td>{{ request.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>
+    <strong><i>Line Items</i></strong>
+    <a [routerLink]="['/lineitem-create', requestId]">
+      <img
+        src="images/add-icon.png"
+        width="20"
+        height="20"
+        title="Edit Line Item"
+      />
+    </a>
+  </h2>
+  <div class="p-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Line Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lineItems">
+          <td>{{ item.product.vendor.name }}</td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.product.price | currency }}</td>
+          <td>{{ item.quantity * item.product.price | currency }}</td>
+          <td>
+            <a [routerLink]="['/lineitem-edit', item.id]">
+              <img
+                src="images/pencil-icon.png"
+                width="20"
+                height="20"
+                title="Edit Line Item"
+              />
+            </a>
+            |
+            <button (click)="delete(item.id)" class="btn btn-sm btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="lineItems.length === 0" class="text-danger">
+      No line items yet. Please create a new one!
+    </div>
+    <br />
+    <a
+      [routerLink]="['/submit-request', requestId]"
+      class="btn btn-sm btn-primary"
+    >
+      Submit
+    </a>
+  </div>
+</div>

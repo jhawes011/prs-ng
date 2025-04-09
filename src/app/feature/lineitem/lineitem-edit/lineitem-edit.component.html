@@ -1,1 +1,48 @@
-<p>lineitem-edit works!</p>
+<div class="container-fluid">
+  <h2>
+    <strong><i>Line Item Edit</i></strong>
+    <a
+      [routerLink]="['/request-lines', requestId]"
+      class="text-decoration-none fs-6"
+    >
+      Back to Request
+    </a>
+  </h2>
+  <form>
+    <hr />
+    <div class="form-group row">
+      <label for="product" class="col-sm-2 col-form-label">Product:</label>
+      <div class="col-sm-4">
+        <select
+          id="product"
+          class="form-control"
+          [(ngModel)]="lineItem.product"
+          name="product"
+        >
+          <option *ngFor="let product of products" [ngValue]="product">
+            {{ product.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <label for="quantity" class="col-sm-2 col-form-label">Quantity:</label>
+      <div class="col-sm-4">
+        <input
+          type="number"
+          id="quantity"
+          class="form-control"
+          [(ngModel)]="lineItem.quantity"
+          name="quantity"
+        />
+      </div>
+    </div>
+    <hr />
+    <div class="form-group row">
+      <div class="col-sm-4 offset-sm-2">
+        <button (click)="save()" class="btn btn-sm btn-primary">Save</button>
+      </div>
+    </div>
+  </form>
+</div>

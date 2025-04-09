@@ -16,6 +16,10 @@ import { RequestListComponent } from './feature/request/request-list/request-lis
 import { RequestCreateComponent } from './feature/request/request-create/request-create.component';
 import { RequestEditComponent } from './feature/request/request-edit/request-edit.component';
 import { RequestDetailComponent } from './feature/request/request-detail/request-detail.component';
+import { LineitemListComponent } from './feature/lineitem/lineitem-list/lineitem-list.component';
+import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
+import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
+import { LineitemDetailComponent } from './feature/lineitem/lineitem-detail/lineitem-detail.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 // import { NotFoundComponent } from './core/not-found/not-found.component';
 
@@ -39,6 +43,11 @@ const routes: Routes = [
   { path: 'request-edit/:id', component: RequestEditComponent },
   { path: 'request-detail/:id', component: RequestDetailComponent },
   { path: 'request-lines/:id', component: RequestLinesComponent },
+  { path: 'lineitem-list', component: LineitemListComponent },
+  { path: 'lineitem-create/:id', component: LineitemCreateComponent },
+  { path: 'lineitem-edit/:id', component: LineitemEditComponent },
+  { path: 'lineitem-detail/:id', component: LineitemDetailComponent },
+
   // { path: '**', component: NotFoundComponent },
 ];
 

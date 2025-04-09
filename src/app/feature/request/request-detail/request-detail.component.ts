@@ -33,33 +33,39 @@ export class RequestDetailComponent implements OnInit, OnDestroy {
         next: (resp) => {
           this.request = resp;
           console.log('Request: ', this.request);
+
+          if (this.request && this.request.user && this.request.user.id) {
+            this.userSvc.getById(this.request.user.id).subscribe({
+              next: (userResp) => {
+                this.user = userResp;
+                console.log('User: ', this.user);
+              },
+              error: (err) => {
+                console.error('Error retrieving user: ', err);
+              },
+            });
+          }
         },
         error: (err) => {
           console.error('Error retrieving request: ', err);
-        },
-      });
-      this.subscription = this.userSvc.getById(this.request.user.id).subscribe({
-        next: (resp) => {
-          this.user = resp;
-          console.log('User: ', this.user);
-        },
-        error: (err) => {
-          console.error('Error retrieving user: ', err);
         },
       });
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
+
   delete() {
-    this.requestSvc.delete(this.requestId).subscribe({
+    this.requestSvc.delete(this.request.id).subscribe({
       next: (resp) => {
         this.router.navigateByUrl('/request-list');
       },
       error: (err) => {
-        console.log('Error deleting request: ', err);
+        console.log(err);
       },
     });
   }

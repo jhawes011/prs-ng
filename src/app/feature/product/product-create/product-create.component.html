@@ -3,15 +3,18 @@
   <form>
     <hr />
     <div class="form-group row">
-      <label for="vendorId" class="col-sm-2 col-form-label">Vendor Id:</label>
+      <label for="product" class="col-sm-2 col-form-label">Vendor:</label>
       <div class="col-sm-4">
-        <input
-          type="text"
-          id="vendorId"
+        <select
+          id="vendor"
           class="form-control"
-          [(ngModel)]="newProduct.vendor.id"
-          name="vendorId"
-        />
+          [(ngModel)]="newProduct.vendor"
+          name="vendor"
+        >
+          <option *ngFor="let vendor of vendors" [ngValue]="vendor">
+            {{ vendor.name }}
+          </option>
+        </select>
       </div>
     </div>
     <hr />
