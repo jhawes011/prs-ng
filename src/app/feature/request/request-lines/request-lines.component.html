@@ -78,11 +78,8 @@
       No line items yet. Please create a new one!
     </div>
     <br />
-    <a
-      [routerLink]="['/submit-request', requestId]"
-      class="btn btn-sm btn-primary"
-    >
-      Submit
-    </a>
+    <button (click)="submitReview(requestId)" class="btn btn-sm btn-primary">
+      Submit For Review
+    </button>
   </div>
 </div>

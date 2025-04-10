@@ -1,4 +1,7 @@
 <div class="p-4">
+  <div *ngIf="loggedInUserName" class="welcome-message">
+    Welcome, {{ loggedInUserName }}! You are logged in.
+  </div>
   <h2>
     <strong><i>Request-List</i> </strong>
     <a routerLink="/request-create">

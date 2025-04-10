@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './feature/user/user-list/user-list.component';
@@ -30,6 +30,9 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestAuditComponent } from './feature/request/request-audit/request-audit.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,8 +58,11 @@ import { RequestLinesComponent } from './feature/request/request-lines/request-l
     RequestDetailComponent,
     RequestLinesComponent,
     MenuComponent,
+    RequestReviewComponent,
+    RequestAuditComponent,
+    UserLoginComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, RouterModule],
   providers: [provideHttpClient(withInterceptorsFromDi())],
   bootstrap: [AppComponent],
 })

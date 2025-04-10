@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from '../../model/menu-item';
-
+import { SystemService } from '../../service/system.service';
 @Component({
   selector: 'app-menu',
   standalone: false,
@@ -10,7 +10,9 @@ import { MenuItem } from '../../model/menu-item';
 export class MenuComponent implements OnInit {
   title: string = 'PRS';
   menuItems: MenuItem[] = [];
+  loggedInUserName: string = '';
 
+  constructor(private sysSvc: SystemService) {}
   ngOnInit(): void {
     this.menuItems = [
       new MenuItem('User', '/user-list', 'User List'),
@@ -18,9 +20,12 @@ export class MenuComponent implements OnInit {
       new MenuItem('Product', '/product-list', 'Product List'),
 
       new MenuItem('Request', '/request-list', 'Request List'),
-      new MenuItem('Review', '/review-list', 'Review List'),
+      new MenuItem('Review', '/request-review', 'Review List'),
 
       new MenuItem('Login', '/user-login', 'User Login'),
     ];
+    if (this.sysSvc.loggedInUser != null) {
+      this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    }
   }
 }

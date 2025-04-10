@@ -18,6 +18,23 @@ export class RequestService {
   getById(id: number): Observable<Request> {
     return this.http.get(URL + '/' + id) as Observable<Request>;
   }
+  getListReview(userId: number): Observable<Request[]> {
+    return this.http.get(URL + '/list-review/' + userId) as Observable<
+      Request[]
+    >;
+  }
+  submitReview(id: number): Observable<Request> {
+    return this.http.put(
+      URL + '/submit-review/' + id,
+      {}
+    ) as Observable<Request>;
+  }
+  approve(id: number): Observable<Request> {
+    return this.http.put(URL + '/approve/' + id, {}) as Observable<Request>;
+  }
+  reject(id: number): Observable<Request> {
+    return this.http.put(URL + '/reject/' + id, {}) as Observable<Request>;
+  }
   update(request: Request): Observable<Request> {
     return this.http.put(
       URL + '/' + request.id,

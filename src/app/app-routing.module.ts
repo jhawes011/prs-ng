@@ -21,6 +21,9 @@ import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/line
 import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
 import { LineitemDetailComponent } from './feature/lineitem/lineitem-detail/lineitem-detail.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
+import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
+import { RequestAuditComponent } from './feature/request/request-audit/request-audit.component';
+import { UserLoginComponent } from './feature/user/user-login/user-login.component';
 // import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
@@ -29,6 +32,7 @@ const routes: Routes = [
   { path: 'user-create', component: UserCreateComponent },
   { path: 'user-edit/:id', component: UserEditComponent },
   { path: 'user-detail/:id', component: UserDetailComponent },
+  { path: 'user-login', component: UserLoginComponent },
 
   { path: 'vendor-list', component: VendorListComponent },
   { path: 'vendor-create', component: VendorCreateComponent },
@@ -43,11 +47,12 @@ const routes: Routes = [
   { path: 'request-edit/:id', component: RequestEditComponent },
   { path: 'request-detail/:id', component: RequestDetailComponent },
   { path: 'request-lines/:id', component: RequestLinesComponent },
+  { path: 'request-review', component: RequestReviewComponent },
+  { path: 'request-audit', component: RequestAuditComponent },
   { path: 'lineitem-list', component: LineitemListComponent },
   { path: 'lineitem-create/:id', component: LineitemCreateComponent },
   { path: 'lineitem-edit/:id', component: LineitemEditComponent },
   { path: 'lineitem-detail/:id', component: LineitemDetailComponent },
-
   // { path: '**', component: NotFoundComponent },
 ];
 

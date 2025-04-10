@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
+import { SystemService } from '../../../service/system.service';
 
 @Component({
   selector: 'app-request-list',
@@ -14,8 +15,13 @@ export class RequestListComponent implements OnInit, OnDestroy {
   title: string = 'Request List';
   requests!: Request[];
   subscription!: Subscription;
-  constructor(private requestSvc: RequestService) {}
+  loggedInUserName: string = '';
+  constructor(
+    private requestSvc: RequestService,
+    private sysSvc: SystemService
+  ) {}
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
     this.subscription = this.requestSvc.list().subscribe((resp) => {
       this.requests = resp;
     });

@@ -34,15 +34,8 @@ export class LineitemEditComponent implements OnInit, OnDestroy {
           this.requestId = this.lineItem.request.id;
 
           this.productSvc.list().subscribe({
-            next: (products) => {
-              this.products = products;
-
-              const matchingProduct = this.products.find(
-                (p) => p.id === this.lineItem.product.id
-              );
-              if (matchingProduct) {
-                this.lineItem.product = matchingProduct;
-              }
+            next: (resp) => {
+              this.products = resp;
             },
             error: (err) => {
               console.error('Error retrieving products:', err);

@@ -1,0 +1,67 @@
+<div class="p-4">
+  <span>
+    <h1>Welcome to Purchase Request System</h1>
+  </span>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <form class="text-center" style="display: inline-block">
+            <table
+              *ngIf="userLogin"
+              class="table-sm"
+              style="
+                margin: 50px auto;
+                padding: 5px 20px;
+                border: 1px solid silver;
+                width: 400px;
+                background-color: rgb(250, 250, 250);
+                display: inline-block;
+              "
+            >
+              <tr class="text-center">
+                <td colspan="2">Login</td>
+              </tr>
+              <tr>
+                <td>Username:</td>
+                <td>
+                  <input
+                    [(ngModel)]="userLogin.userName"
+                    name="UserName"
+                    type="text"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>Password:</td>
+                <td>
+                  <input
+                    [(ngModel)]="userLogin.password"
+                    name="Password"
+                    type="password"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center" colspan="2">
+                  <button
+                    type="submit"
+                    (click)="login()"
+                    class="btn btn-primary"
+                  >
+                    Login
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2">
+                  <label class="text-danger">{{ message }}</label>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -23,7 +23,8 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
   constructor(
     private requestSvc: RequestService,
     private lineItemSvc: LineItemService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +65,16 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Error deleting line item:', err);
+      },
+    });
+  }
+  submitReview(requestId: number): void {
+    this.requestSvc.submitReview(requestId).subscribe({
+      next: (resp) => {
+        this.router.navigateByUrl('/request-list');
+      },
+      error: (err) => {
+        console.error('Error submitting review:', err);
       },
     });
   }
