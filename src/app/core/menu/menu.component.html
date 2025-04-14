@@ -1,7 +1,15 @@
 <nav>
-  <ul>
+  <ul width="100%">
+    <img
+      style="margin-left: 20px"
+      width="50"
+      height="50"
+      src="images/workplace.png"
+      alt="Main Icon"
+      title="Main Icon"
+    />
     <li *ngFor="let mi of menuItems" title="{{ mi.tooltip }}">
-      <a routerLink="{{ mi.href }}">{{ mi.display }}</a>
+      <a routerLink="{{ mi.href }}">-{{ mi.display }}-</a>
     </li>
   </ul>
 </nav>

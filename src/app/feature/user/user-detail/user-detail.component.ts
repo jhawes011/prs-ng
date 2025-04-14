@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../../../model/user';
 import { UserService } from '../../../service/user.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-user-detail',
   standalone: false,
@@ -13,16 +13,18 @@ import { UserService } from '../../../service/user.service';
 export class UserDetailComponent implements OnInit, OnDestroy {
   title: string = 'User Detail';
   userId!: number;
-  user!: User;
+  user: User = new User();
   subscription!: Subscription;
-
+  loggedInUserName: string = '';
   constructor(
     private userSvc: UserService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
     this.actRoute.params.subscribe((params) => {
       this.userId = params['id'];
 
@@ -38,7 +40,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
   delete() {
     this.userSvc.delete(this.userId).subscribe({

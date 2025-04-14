@@ -1,7 +1,10 @@
+<div *ngIf="loggedInUser" class="welcome-banner">
+  Welcome {{ loggedInUser }}! You are logged in.
+</div>
 <div class="p-4">
-  <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
-    <a routerLink="/product-create">
+  <h2>
+    <strong><i>Product List</i> </strong>
+    <a *ngIf="isAdmin" routerLink="/product-create" style="margin-left: 10px">
       <img
         width="20"
         height="20"
@@ -10,7 +13,8 @@
         title="Add New"
       />
     </a>
-  </section>
+  </h2>
+  <br />
   <table class="table table-striped table-hover">
     <thead>
       <th>Id</th>
@@ -30,17 +34,27 @@
         <td>{{ p.name }}</td>
         <td>{{ p.price }}</td>
         <td>{{ p.unit }}</td>
-        <td>{{ p.photoPath }}</td>
+        <td>
+          <a
+            *ngIf="p.photoPath"
+            href="{{ p.photoPath }}"
+            target="_blank"
+            class="btn btn-sm btn-outline-primary"
+          >
+            <i class="fa fa-image"></i> View
+          </a>
+          <span *ngIf="!p.photoPath" class="text-muted">No image</span>
+        </td>
 
         <td>
-          <a routerLink="/product-edit/{{ p.id }}">
+          <a *ngIf="isAdmin" routerLink="/product-edit/{{ p.id }}">
             <img
               src="images/pencil-icon.png"
               width="20"
               height="20"
               title="Edit Product"
             />|
-            <a routerLink="/product-detail/{{ p.id }}">
+            <a *ngIf="isAdmin" routerLink="/product-detail/{{ p.id }}">
               <img
                 src="images/details.png"
                 width="20"

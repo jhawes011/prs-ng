@@ -1,5 +1,17 @@
-<div class="container-fluid">
-  <h2>Vendor-Edit</h2>
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
+  <h2>
+    <strong><i>Vendor Edit</i></strong>
+    <a
+      [routerLink]="['/vendor-list']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
+      Back to Vendor List
+    </a>
+  </h2>
   <form>
     <div class="form-group row">
       <label for="id" class="col-sm-2 col-form-label">ID</label>

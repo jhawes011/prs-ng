@@ -1,1 +1,85 @@
-<p>request-audit works!</p>
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
+  <h2>
+    <strong><i>Request Audit</i></strong>
+    <a
+      [routerLink]="['/request-review']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
+      Return to Requests Review
+    </a>
+  </h2>
+
+  <div class="p-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ request.user.firstName }} {{ request.user.lastName }}</td>
+          <td>{{ request.description }}</td>
+          <td>{{ request.status }}</td>
+          <td>{{ request.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>
+    <strong><i>Line Items</i></strong>
+  </h2>
+  <div class="p-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Vendor</th>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Line Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of lineItems">
+          <td>{{ item.product.vendor.name }}</td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.product.price | currency }}</td>
+          <td>{{ item.quantity * item.product.price | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br />
+    <div class="d-flex align-items-center gap-2">
+      <button (click)="approve(requestId)" class="btn btn-sm btn-primary">
+        Approve
+      </button>
+      <input
+        type="text"
+        [(ngModel)]="reasonForRejection"
+        placeholder="Reason for Rejection"
+        name="reasonForRejection"
+        class="form-control mb-2 auto-expand-input"
+        style="width: 400px"
+      />
+
+      <button
+        *ngIf="reasonForRejection"
+        (click)="reject(requestId)"
+        class="btn btn-sm btn-danger"
+      >
+        Reject
+      </button>
+    </div>
+  </div>
+</div>

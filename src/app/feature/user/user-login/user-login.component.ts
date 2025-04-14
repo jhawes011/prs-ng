@@ -26,6 +26,8 @@ export class UserLoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.sysSvc.loggedInUser = new User();
+
     this.userName = '';
     this.password = '';
   }

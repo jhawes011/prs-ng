@@ -1,21 +1,29 @@
-<div class="container-fluid">
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
   <h2>
-    <strong><i>Request-Create</i> </strong>
-    <a [routerLink]="['/request-list']" class="text-decoration-none fs-6">
+    <strong><i>Request Create</i> </strong>
+    <a
+      [routerLink]="['/request-list']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
       Back to Request List
     </a>
   </h2>
   <form>
     <hr />
     <div class="form-group row">
-      <label for="userId" class="col-sm-2 col-form-label">User ID:</label>
+      <label for="userName" class="col-sm-2 col-form-label">User:</label>
       <div class="col-sm-4">
         <input
           type="text"
-          id="userId"
+          id="userName"
           class="form-control"
-          [(ngModel)]="newRequest.user.id"
-          name="userId"
+          [(ngModel)]="loggedInUserName"
+          name="userName"
+          disabled
         />
       </div>
     </div>

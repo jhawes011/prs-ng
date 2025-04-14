@@ -6,7 +6,7 @@ import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
 import { LineItem } from '../../../model/line-item';
 import { LineItemService } from '../../../service/line-item.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-request-lines',
   standalone: false,
@@ -17,17 +17,20 @@ export class RequestLinesComponent implements OnInit, OnDestroy {
   title: string = 'Request Lines';
   requestId!: number;
   request!: Request;
-  lineItems!: LineItem[];
+  lineItems: LineItem[] = [];
   subscription!: Subscription;
-
+  loggedInUserName: string = '';
   constructor(
     private requestSvc: RequestService,
     private lineItemSvc: LineItemService,
     private actRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.actRoute.params.subscribe((params) => {
       this.requestId = params['id'];
 

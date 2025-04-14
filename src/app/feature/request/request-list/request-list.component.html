@@ -1,10 +1,10 @@
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
 <div class="p-4">
-  <div *ngIf="loggedInUserName" class="welcome-message">
-    Welcome, {{ loggedInUserName }}! You are logged in.
-  </div>
   <h2>
-    <strong><i>Request-List</i> </strong>
-    <a routerLink="/request-create">
+    <strong><i>Request List</i> </strong>
+    <a routerLink="/request-create" style="margin-left: 10px">
       <img
         width="20"
         height="20"

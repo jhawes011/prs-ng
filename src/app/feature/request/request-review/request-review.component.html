@@ -1,6 +1,9 @@
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
 <div class="p-4">
   <h2>
-    <strong><i>Request-Review</i> </strong>
+    <strong><i>Request Review</i> </strong>
   </h2>
 
   <table class="table table-striped table-hover">
@@ -25,9 +28,9 @@
         <td>
           <a routerLink="/request-audit/{{ r.id }}">
             <img
-              src="images/pencil-icon.png"
-              width="20"
-              height="20"
+              src="images/review.png"
+              width="28"
+              height="28"
               title="Audit Request"
             />
           </a>

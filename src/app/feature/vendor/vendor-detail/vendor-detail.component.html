@@ -1,7 +1,15 @@
-<div class="container-fluid">
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
   <h2>
-    <strong><i>Vendor-Detail</i> </strong>
-    <a [routerLink]="['/vendor-list']" class="text-decoration-none fs-6">
+    <strong><i>Vendor Detail</i> </strong>
+
+    <a
+      [routerLink]="['/vendor-list']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
       Back to Vendor List
     </a>
   </h2>
@@ -128,7 +136,7 @@
     </div>
     <hr />
     <div class="form-group row">
-      <div class="col-sm-4 offset-sm-2">
+      <div class="col-sm-4 offset-sm-2" *ngIf="isAdmin">
         <a
           [routerLink]="['/vendor-edit', vendor.id]"
           class="btn btn-sm btn-warning me-2"

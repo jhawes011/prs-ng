@@ -10,22 +10,22 @@ import { SystemService } from '../../service/system.service';
 export class MenuComponent implements OnInit {
   title: string = 'PRS';
   menuItems: MenuItem[] = [];
-  loggedInUserName: string = '';
-
+  reviewer: boolean = false;
   constructor(private sysSvc: SystemService) {}
   ngOnInit(): void {
+    this.reviewer = this.sysSvc.loggedInUser.reviewer;
     this.menuItems = [
-      new MenuItem('User', '/user-list', 'User List'),
-      new MenuItem('Vendor', '/vendor-list', 'Vendor List'),
-      new MenuItem('Product', '/product-list', 'Product List'),
-
-      new MenuItem('Request', '/request-list', 'Request List'),
-      new MenuItem('Review', '/request-review', 'Review List'),
-
-      new MenuItem('Login', '/user-login', 'User Login'),
+      new MenuItem('Users', '/user-list', 'User List'),
+      new MenuItem('Vendors', '/vendor-list', 'Vendor List'),
+      new MenuItem('Products', '/product-list', 'Product List'),
+      new MenuItem('Requests', '/request-list', 'Request List'),
     ];
-    if (this.sysSvc.loggedInUser != null) {
-      this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+
+    if (this.reviewer === true) {
+      this.menuItems.push(
+        new MenuItem('Review', '/request-review', 'Review List')
+      );
     }
+    this.menuItems.push(new MenuItem('Logout', '/user-login', 'Logout'));
   }
 }

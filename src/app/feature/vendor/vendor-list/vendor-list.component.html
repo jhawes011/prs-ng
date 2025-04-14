@@ -1,7 +1,10 @@
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
 <div class="p-4">
-  <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
-    <a routerLink="/vendor-create">
+  <h2>
+    <strong><i>Vendor List</i></strong>
+    <a *ngIf="isAdmin" routerLink="/vendor-create" style="margin-left: 10px">
       <img
         width="20"
         height="20"
@@ -10,7 +13,8 @@
         title="Add New"
       />
     </a>
-  </section>
+  </h2>
+
   <table class="table table-striped table-hover">
     <thead>
       <th>Code</th>
@@ -37,6 +41,7 @@
         <td>
           <a routerLink="/vendor-edit/{{ v.id }}">
             <img
+              *ngIf="isAdmin"
               src="images/pencil-icon.png"
               width="20"
               height="20"

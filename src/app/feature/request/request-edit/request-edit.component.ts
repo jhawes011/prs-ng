@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   standalone: false,
 
@@ -14,16 +14,19 @@ import { RequestService } from '../../../service/request.service';
 export class RequestEditComponent implements OnInit, OnDestroy {
   title: string = 'Request Edit';
   requestId!: number;
-  request!: Request;
+  request: Request = new Request();
   subscription!: Subscription;
-
+  loggedInUserName: string = '';
   constructor(
     private requestSvc: RequestService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.actRoute.params.subscribe((params) => {
       this.requestId = params['id'];
 

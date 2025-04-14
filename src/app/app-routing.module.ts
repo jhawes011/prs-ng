@@ -19,7 +19,6 @@ import { RequestDetailComponent } from './feature/request/request-detail/request
 import { LineitemListComponent } from './feature/lineitem/lineitem-list/lineitem-list.component';
 import { LineitemCreateComponent } from './feature/lineitem/lineitem-create/lineitem-create.component';
 import { LineitemEditComponent } from './feature/lineitem/lineitem-edit/lineitem-edit.component';
-import { LineitemDetailComponent } from './feature/lineitem/lineitem-detail/lineitem-detail.component';
 import { RequestLinesComponent } from './feature/request/request-lines/request-lines.component';
 import { RequestReviewComponent } from './feature/request/request-review/request-review.component';
 import { RequestAuditComponent } from './feature/request/request-audit/request-audit.component';
@@ -27,7 +26,7 @@ import { UserLoginComponent } from './feature/user/user-login/user-login.compone
 // import { NotFoundComponent } from './core/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/user-list', pathMatch: 'full' },
+  { path: '', redirectTo: '/user-login', pathMatch: 'full' },
   { path: 'user-list', component: UserListComponent },
   { path: 'user-create', component: UserCreateComponent },
   { path: 'user-edit/:id', component: UserEditComponent },
@@ -48,11 +47,10 @@ const routes: Routes = [
   { path: 'request-detail/:id', component: RequestDetailComponent },
   { path: 'request-lines/:id', component: RequestLinesComponent },
   { path: 'request-review', component: RequestReviewComponent },
-  { path: 'request-audit', component: RequestAuditComponent },
+  { path: 'request-audit/:id', component: RequestAuditComponent },
   { path: 'lineitem-list', component: LineitemListComponent },
   { path: 'lineitem-create/:id', component: LineitemCreateComponent },
   { path: 'lineitem-edit/:id', component: LineitemEditComponent },
-  { path: 'lineitem-detail/:id', component: LineitemDetailComponent },
   // { path: '**', component: NotFoundComponent },
 ];
 

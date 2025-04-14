@@ -5,6 +5,7 @@ import { LineItem } from '../../../model/line-item';
 import { LineItemService } from '../../../service/line-item.service';
 import { ProductService } from '../../../service/product.service';
 import { Product } from '../../../model/product';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-lineitem-create',
   standalone: false,
@@ -17,11 +18,14 @@ export class LineitemCreateComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   products!: Product[];
   requestId!: number;
+  loggedInUserId!: number;
+  loggedInUserName!: string;
   constructor(
     private lineItemSvc: LineItemService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private productSvc: ProductService
+    private productSvc: ProductService,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
@@ -31,6 +35,8 @@ export class LineitemCreateComponent implements OnInit, OnDestroy {
     this.subscription = this.productSvc.list().subscribe({
       next: (resp) => {
         this.products = resp;
+        this.loggedInUserId = this.sysSvc.loggedInUser.id;
+        this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
       },
       error: (err) => {
         console.error('Error retrieving products:', err);
@@ -39,7 +45,9 @@ export class LineitemCreateComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   add(): void {

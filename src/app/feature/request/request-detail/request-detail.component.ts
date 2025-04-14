@@ -5,6 +5,7 @@ import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
 import { User } from '../../../model/user';
 import { UserService } from '../../../service/user.service';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-request-detail',
   standalone: false,
@@ -14,18 +15,22 @@ import { UserService } from '../../../service/user.service';
 export class RequestDetailComponent implements OnInit, OnDestroy {
   title: string = 'Request Detail';
   requestId!: number;
-  request!: Request;
+  request: Request = new Request();
   subscription!: Subscription;
   userId!: number;
   user!: User;
+  loggedInUser: string = '';
   constructor(
     private requestSvc: RequestService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private userSvc: UserService
+    private userSvc: UserService,
+    private sysSvc: SystemService
   ) {}
 
   ngOnInit(): void {
+    this.loggedInUser = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.actRoute.params.subscribe((params) => {
       this.requestId = params['id'];
 

@@ -1,7 +1,14 @@
-<div class="container-fluid">
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4" *ngIf="request">
   <h2>
     <strong><i>Purchase Request</i></strong>
-    <a [routerLink]="['/request-list']" class="text-decoration-none fs-6">
+    <a
+      [routerLink]="['/request-list']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
       Return to Requests List
     </a>
   </h2>
@@ -29,7 +36,7 @@
 
   <h2>
     <strong><i>Line Items</i></strong>
-    <a [routerLink]="['/lineitem-create', requestId]">
+    <a [routerLink]="['/lineitem-create', requestId]" style="margin-left: 10px">
       <img
         src="images/add-icon.png"
         width="20"

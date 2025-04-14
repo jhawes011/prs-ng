@@ -1,6 +1,19 @@
-<div class="container-fluid">
-  <h2>User-Edit</h2>
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
+  <h2>
+    <strong><i>User Edit</i></strong>
+    <a
+      [routerLink]="['/user-list']"
+      style="margin-left: 10px"
+      class="text-decoration-none fs-6"
+    >
+      Return to User List
+    </a>
+  </h2>
   <form>
+    <hr />
     <div class="form-group row">
       <label for="id" class="col-sm-2 col-form-label">ID</label>
       <div class="col-sm-4">

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { Subscription } from 'rxjs';
 import { Product } from '../../../model/product';
 import { ProductService } from '../../../service/product.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-product-list',
   standalone: false,
@@ -14,8 +14,18 @@ export class ProductListComponent implements OnInit, OnDestroy {
   title: string = 'Product List';
   products!: Product[];
   subscription!: Subscription;
-  constructor(private productSvc: ProductService) {}
+  loggedInUser: string = '';
+  isAdmin: boolean = false;
+  constructor(
+    private productSvc: ProductService,
+    private sysSvc: SystemService
+  ) {}
   ngOnInit(): void {
+    this.loggedInUser = this.sysSvc.loggedInUser.firstName;
+
+    this.sysSvc.checkLogin();
+    this.isAdmin = this.sysSvc.loggedInUser.admin === true;
+
     this.subscription = this.productSvc.list().subscribe((resp) => {
       this.products = resp;
     });

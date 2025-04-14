@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Vendor } from '../../../model/vendor';
 import { VendorService } from '../../../service/vendor.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-vendor-create',
   standalone: false,
@@ -14,12 +14,21 @@ export class VendorCreateComponent implements OnInit, OnDestroy {
   title: string = 'Vendor Create';
   newVendor: Vendor = new Vendor();
   subscription!: Subscription;
-  constructor(private vendorSvc: VendorService, private router: Router) {}
+  loggedInUserName: string = '';
+  constructor(
+    private vendorSvc: VendorService,
+    private router: Router,
+    private sysSvc: SystemService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+  }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   addVendor(): void {

@@ -1,9 +1,13 @@
-<div class="container-fluid">
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
   <h2>
     <strong><i>Line Item Create</i></strong>
     <a
       [routerLink]="['/request-lines', requestId]"
       class="text-decoration-none fs-6"
+      style="margin-left: 10px"
     >
       Back to Request
     </a>

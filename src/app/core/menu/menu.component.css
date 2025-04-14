@@ -11,6 +11,8 @@ li {
   display: inline-block;
   text-align: center;
   font-size: 20px;
+  font-weight: bold;
+  padding-left: 10px;
 }
 a {
   color: white;

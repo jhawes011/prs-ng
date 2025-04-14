@@ -1,7 +1,10 @@
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
 <div class="p-4">
-  <section class="heading">
-    <span class="page-title font-weight-bold font-italic">{{ title }}</span>
-    <a routerLink="/user-create">
+  <h2>
+    <strong><i>Users</i></strong>
+    <a *ngIf="isAdmin" routerLink="/user-create" style="margin-left: 10px">
       <img
         width="20"
         height="20"
@@ -10,7 +13,8 @@
         title="Add New"
       />
     </a>
-  </section>
+  </h2>
+
   <table class="table table-striped table-hover">
     <thead>
       <th>Username</th>
@@ -36,14 +40,14 @@
           <input type="checkbox" [checked]="u.admin" disabled />
         </td>
         <td>
-          <a routerLink="/user-edit/{{ u.id }}">
+          <a *ngIf="isAdmin" routerLink="/user-edit/{{ u.id }}">
             <img
               src="images/pencil-icon.png"
               width="20"
               height="20"
               title="Edit User"
             />|
-            <a routerLink="/user-detail/{{ u.id }}">
+            <a *ngIf="isAdmin" routerLink="/user-detail/{{ u.id }}">
               <img
                 src="images/details.png"
                 width="20"

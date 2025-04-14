@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { User } from '../../../model/user';
 import { UserService } from '../../../service/user.service';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-user-create',
   standalone: false,
@@ -14,10 +15,19 @@ export class UserCreateComponent implements OnInit, OnDestroy {
   newUser: User = new User();
   subscription!: Subscription;
   birthDate: string = 'YYYY-MM-DD';
-  constructor(private userSvc: UserService, private router: Router) {}
-  ngOnInit(): void {}
+  loggedInUserName: string = '';
+  constructor(
+    private userSvc: UserService,
+    private router: Router,
+    private sysSvc: SystemService
+  ) {}
+  ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+  }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   addUser(): void {

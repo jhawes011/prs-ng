@@ -5,6 +5,7 @@ import { ProductService } from '../../../service/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Vendor } from '../../../model/vendor';
 import { VendorService } from '../../../service/vendor.service';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-product-edit',
   standalone: false,
@@ -14,16 +15,20 @@ import { VendorService } from '../../../service/vendor.service';
 export class ProductEditComponent implements OnInit, OnDestroy {
   title: string = 'Product Edit';
   productId!: number;
-  product!: Product;
+  product: Product = new Product();
   subscription!: Subscription;
   vendors: Vendor[] = [];
+  loggedInUserName: string = '';
   constructor(
     private productSvc: ProductService,
     private vendorSvc: VendorService,
     private router: Router,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private sysSvc: SystemService
   ) {}
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.actRoute.params.subscribe((params) => {
       this.productId = params['id'];
 

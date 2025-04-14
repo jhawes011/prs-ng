@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-request-review',
   standalone: false,
@@ -15,14 +15,23 @@ export class RequestReviewComponent implements OnInit, OnDestroy {
   requests!: Request[];
   requestId!: number;
   subscription!: Subscription;
-  constructor(private requestSvc: RequestService, private router: Router) {}
+  loggedInUserName: string = '';
+  constructor(
+    private requestSvc: RequestService,
+    private router: Router,
+    private sysSvc: SystemService
+  ) {}
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.subscription = this.requestSvc.getListReview(3).subscribe((resp) => {
       this.requests = resp;
     });
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
   submitReview(request: Request) {
     this.requestSvc.submitReview(this.requestId).subscribe({

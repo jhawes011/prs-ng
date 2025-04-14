@@ -5,6 +5,7 @@ import { LineItem } from '../../../model/line-item';
 import { LineItemService } from '../../../service/line-item.service';
 import { Product } from '../../../model/product';
 import { ProductService } from '../../../service/product.service';
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-lineitem-edit',
   standalone: false,
@@ -18,24 +19,33 @@ export class LineitemEditComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
   products!: Product[];
   requestId!: number;
+  loggedInUserName: string = '';
+  request!: Request;
+  productId!: number;
   constructor(
     private lineItemSvc: LineItemService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private productSvc: ProductService
+    private productSvc: ProductService,
+    private sysSvc: SystemService
   ) {}
   ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
     this.actRoute.params.subscribe((params) => {
       this.lineItemId = params['id'];
 
       this.subscription = this.lineItemSvc.getById(this.lineItemId).subscribe({
         next: (resp) => {
           this.lineItem = resp;
+
           this.requestId = this.lineItem.request.id;
 
           this.productSvc.list().subscribe({
             next: (resp) => {
               this.products = resp;
+              this.lineItem.product =
+                resp.find((p) => p.id === this.lineItem.product?.id) ||
+                this.lineItem.product;
             },
             error: (err) => {
               console.error('Error retrieving products:', err);

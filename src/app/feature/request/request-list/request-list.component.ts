@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
@@ -22,11 +21,14 @@ export class RequestListComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
     this.subscription = this.requestSvc.list().subscribe((resp) => {
       this.requests = resp;
     });
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

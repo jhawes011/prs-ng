@@ -1,8 +1,12 @@
-<div class="container-fluid">
+<div *ngIf="loggedInUserName" class="welcome-banner">
+  Welcome {{ loggedInUserName }}! You are logged in.
+</div>
+<div class="p-4">
   <h2>
     <strong><i>Line Item Edit</i></strong>
     <a
       [routerLink]="['/request-lines', requestId]"
+      style="margin-left: 10px"
       class="text-decoration-none fs-6"
     >
       Back to Request
@@ -14,6 +18,7 @@
       <label for="product" class="col-sm-2 col-form-label">Product:</label>
       <div class="col-sm-4">
         <select
+          type="text"
           id="product"
           class="form-control"
           [(ngModel)]="lineItem.product"

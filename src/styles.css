@@ -1,1 +1,20 @@
-
+.welcome-banner {
+  position: absolute;
+  top: 18px;
+  right: 40px;
+  float: right;
+  margin-top: 0;
+  padding-top: 0px;
+  padding-right: 15px;
+  color: rgb(255, 255, 255);
+  font-size: 20px;
+  font-weight: bold;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Center text inside the container */
+}

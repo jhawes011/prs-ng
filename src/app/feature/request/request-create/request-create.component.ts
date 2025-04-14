@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Request } from '../../../model/request';
 import { RequestService } from '../../../service/request.service';
-
+import { SystemService } from '../../../service/system.service';
 @Component({
   selector: 'app-request-create',
   standalone: false,
@@ -15,13 +15,23 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
   newRequest: Request = new Request();
   reasonForRejection: string = 'null';
   subscription!: Subscription;
+  loggedInUserName: string = '';
 
-  constructor(private requestSvc: RequestService, private router: Router) {}
+  constructor(
+    private requestSvc: RequestService,
+    private router: Router,
+    private sysSvc: SystemService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    this.sysSvc.checkLogin();
+  }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   addRequest(): void {
