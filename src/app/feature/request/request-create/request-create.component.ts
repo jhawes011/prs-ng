@@ -26,6 +26,11 @@ export class RequestCreateComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
     this.sysSvc.checkLogin();
+
+    this.newRequest.user = this.sysSvc.loggedInUser;
+
+    this.newRequest.status = 'New';
+    this.newRequest.total = 0;
   }
 
   ngOnDestroy(): void {

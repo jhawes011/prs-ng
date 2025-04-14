@@ -22,11 +22,14 @@ export class RequestReviewComponent implements OnInit, OnDestroy {
     private sysSvc: SystemService
   ) {}
   ngOnInit(): void {
-    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
     this.sysSvc.checkLogin();
-    this.subscription = this.requestSvc.getListReview(3).subscribe((resp) => {
-      this.requests = resp;
-    });
+    this.loggedInUserName = this.sysSvc.loggedInUser.firstName;
+    const loggedInUserId = this.sysSvc.loggedInUser.id;
+    this.subscription = this.requestSvc
+      .getListReview(loggedInUserId)
+      .subscribe((resp) => {
+        this.requests = resp;
+      });
   }
   ngOnDestroy(): void {
     if (this.subscription) {
